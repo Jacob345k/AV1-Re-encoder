@@ -26,7 +26,7 @@ while True:
             if file.endswith('.av1'):
                 file_path = os.path.join(root, file)
                 output_path = os.path.splitext(file_path)[0] + '.mkv'
-                subprocess.run(['ffmpeg', '-i', file_path, '-c:v', 'libx265', '-c:a', 'copy', output_path], shell=True)
+                subprocess.run(['ffmpeg', '-i', file_path, '-c:v', 'libx265', '-c:a', 'copy', '-threads','4', output_path], shell=True)
                 if os.path.exists(output_path):
                     os.remove(file_path)
     time.sleep(28800) # 8 hours
